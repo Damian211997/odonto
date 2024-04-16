@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Sidebar Dashboard CSS Learning</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+ <link rel="stylesheet" href="styles.css">
+ <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1600px;
+      margin: 60px auto;
+      background-color: #fff;
+      padding: 60px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2, h3 {
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #666;
+    }
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: calc(100% - 10px);
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #163658;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #163658;
+    }
+    .form-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    .form-row > div {
+      flex-basis: calc(33.33% - 5px);
+    }
+ </style>
+</head>
+<body>
+ <input type="checkbox" id="check"/>
+ <header>
+    <label for="check">
+      <i class="fas fa-bars" id="sidebar_btn"></i>
+    </label>
+    <div class="left_area">
+      <h3>Sistema <span>Nutricion</span></h3>
+    </div>
+    <div class="right_area">
+      <a href="login.html" class="logout_btn">Logout</a>
+    </div>
+ </header>
+ <div class="sidebar">
+    <div class="profile-div">
+      <img src="https://picsum.photos/id/166/200/200" class="profile_image" alt=""/>
+      <h4>Cristian</h4>
+    </div>
+    <a href="clientes.html">
+      <i class="fas fa-desktop"></i>
+      <span>Ingreso Pacientes</span>
+    </a>
+    <a href="ingreso.html">
+      <i class="fas fa-cogs"></i>
+      <span>Ingreso de Citas</span>   
+    </a>
+    <a href="calendar.html">
+      <i class="fas fa-table"></i>
+      <span>Calendario de Citas</span>   
+    </a>
+    <a href="#">
+      <i class="fas fa-th"></i>
+      <span>Forms</span>  
+    </a>
+    <a href="#">
+      <i class="fas fa-info-circle"></i>
+      <span>About</span>  
+    </a>
+    <a href="#">
+      <i class="fas fa-sliders-h"></i>
+      <span>Settings</span>  
+    </a>
+ </div>
+ <div class="content">
+    <div class="container">
+      <h2>Agendar Cita</h2>
+      <form action="/ruta-de-procesamiento" method="post">
+        <div class="form-row">
+          <div>
+            <label for="nombre_paciente">Nombre del Paciente:</label>
+            <input type="text" id="nombre_paciente" name="nombre_paciente" required>
+          </div>
+          <div>
+            <label for="fecha_cita">Fecha de la Cita:</label>
+            <input type="date" id="fecha_cita" name="fecha_cita" required>
+          </div>
+          <div>
+            <label for="hora_cita">Hora de la Cita:</label>
+            <input type="time" id="hora_cita" name="hora_cita" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="mensaje_cita">Mensaje:</label>
+            <textarea id="mensaje_cita" name="mensaje_cita"></textarea>
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <input type="submit" value="Agendar Cita">
+          </div>
+        </div>
+      </form>
+    </div>
+ </div>
+</body>
+</html>

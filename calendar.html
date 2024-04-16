@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <input type="checkbox" id="check"/>
+  <header>
+    <label for="check">
+      <i class="fas fa-bars" id="sidebar_btn"></i>
+    </label>
+    <div class="left_area">
+      <h3>Sistema <span>Nutricion</span></h3>
+    </div>
+    <div class="right_area">
+      <a href="login.html" class="logout_btn">Logout</a>
+    </div>
+  </header>
+  <div class="sidebar">
+    <div class="profile-div">
+      <img src="https://picsum.photos/id/166/200/200" class="profile_image" alt=""/>
+      <h4>Cristian</h4>
+    </div>
+    <a href="clientes.html">
+      <i class="fas fa-desktop"></i>
+      <span>Ingreso Pacientes</span>
+    </a>
+    <a href="ingreso.html">
+      <i class="fas fa-cogs"></i>
+      <span>Ingreso de Citas</span>   
+    </a>
+    <a href="calendar.html">
+      <i class="fas fa-table"></i>
+      <span>Calendario de Citas</span>   
+    </a>
+    <a href="#">
+      <i class="fas fa-th"></i>
+      <span>Forms</span>  
+    </a>
+    <a href="#">
+      <i class="fas fa-info-circle"></i>
+      <span>About</span>  
+    </a>
+    <a href="#">
+      <i class="fas fa-sliders-h"></i>
+      <span>Settings</span>  
+    </a>
+  </div>
+  <div class="content">
+    <div id='calendar'></div>
+    <!-- Menú contextual -->
+    <div id="context-menu" class="context-menu">
+      <ul>
+        <li><a href="#" id="edit-event">Editar</a></li>
+        <li><a href="#" id="delete-event">Eliminar</a></li>
+        <li><a href="#" id="disable-day">Deshabilitar día</a></li>
+      </ul>
+    </div>
+  </div>
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js' defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        editable: true,
+        dayMaxEvents: true,
+        events: [
+          {
+            title: 'Evento de ejemplo',
+            start: '2024-01-02T10:00:00',
+            allDay: false
+          }
+        ],
+        eventTimeFormat: {
+          hour: '2-digit',
+          minute: '2-digit',
+          meridiem: false
+        },
+        dateClick: function(info) {
+          showContextMenu(info.dateStr, info.jsEvent);
+        }
+      });
+      calendar.render();
+
+      function showContextMenu(date, jsEvent) {
+        var contextMenu = document.getElementById('context-menu');
+        contextMenu.style.display = 'block';
+        contextMenu.style.left = jsEvent.pageX + 'px';
+        contextMenu.style.top = jsEvent.pageY + 'px';
+
+        document.getElementById('edit-event').onclick = function() {
+          alert('Editar evento del día ' + date);
+        };
+        document.getElementById('delete-event').onclick = function() {
+          alert('Eliminar evento del día ' + date);
+        };
+        document.getElementById('disable-day').onclick = function() {
+          alert('Deshabilitar día ' + date);
+        };
+
+        // Close context menu on outside click
+        document.addEventListener('click', function(event) {
+          if (!contextMenu.contains(event.target)) {
+            contextMenu.style.display = 'none';
+          }
+        }, { once: true });
+      }
+    });
+  </script>
+</body>
+</html>
